@@ -1,6 +1,6 @@
 BFS
 
-CREATE empty set Visited
+	CREATE empty set Visited
 	CALL DFS_Visit(StartNode)
 	DFS_Visit(Node)
     	ADD Node to Visited
