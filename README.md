@@ -11,7 +11,9 @@ DFS
         	END IF
     	END FOR
 	END DFS_Visit
+	
 BFS
+
     CREATE empty queue Q
     CREATE empty set Visited
     ADD StartNode to Visited
@@ -25,4 +27,73 @@ BFS
               ENQUEUE Neighbor into Q
           END IF
       END FOR
-   END WHILE
+    END WHILE
+UCS
+
+    INSERT (0, Start) into PQ      // (cost, node)
+    WHILE PQ not empty DO
+      (Cost, Node) ← REMOVE node with minimum cost from PQ
+      IF Node = Goal THEN
+          PRINT "Goal Reached with cost", Cost
+          EXIT
+      END IF
+      IF Node not in Visited THEN
+         ADD Node to Visited
+         FOR each Neighbor of Node DO
+            INSERT (Cost + EdgeCost, Neighbor) into PQ
+         END FOR
+     END IF
+    END WHILE
+Water Jug problem
+
+              CREATE queue Q
+              CREATE set Visited
+              ENQUEUE (0,0)
+              ADD (0,0) to Visited
+              WHILE Q not empty DO
+                (x,y) ← DEQUEUE Q
+
+                IF x = Target OR y = Target THEN
+                    PRINT "Target Reached"
+                    EXIT
+                END IF
+                GENERATE possible states
+                ADD unvisited states to Q
+              END WHILE
+              PRINT "Target Not Possible"
+A *search
+
+        CREATE priority queue PQ
+        INSERT (f=0, Start)
+        WHILE PQ not empty DO
+        Node ← REMOVE node with lowest f
+        IF Node = Goal THEN
+          PRINT "Goal Reached"
+          EXIT
+        END IF
+        FOR each Neighbor DO
+          g ← path cost
+          f ← g + heuristic
+         INSERT Neighbor into PQ
+       END FOR
+      END WHILE
+Greedy Best First search
+
+              CREATE priority queue PQ
+              INSERT Start using heuristic
+              WHILE PQ not empty DO
+                Node ← REMOVE lowest heuristic node
+                PRINT Node
+                IF Node = Goal THEN EXIT
+                INSERT neighbors into PQ
+              END WHILE
+Mini-max
+
+      IF Depth = 0 OR Node is leaf THEN
+       RETURN value
+      END IF
+      IF IsMax THEN
+       RETURN max(Minimax(children))
+      ELSE
+       RETURN min(Minimax(children))
+      END IF
