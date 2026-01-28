@@ -97,3 +97,22 @@ Mini-max
       ELSE
        RETURN min(Minimax(children))
       END IF
+AlphaBeta
+
+      AlphaBeta(Node, Depth, α, β, IsMax)
+
+    	IF Depth = 0 THEN RETURN value
+
+   		IF IsMax THEN
+         FOR each child DO
+            α ← max(α, AlphaBeta(child))
+            IF β ≤ α THEN BREAK
+         END FOR
+        ELSE
+          FOR each child DO
+            β ← min(β, AlphaBeta(child))
+            IF β ≤ α THEN BREAK
+         END FOR
+        END IF
+
+	END AlphaBeta
